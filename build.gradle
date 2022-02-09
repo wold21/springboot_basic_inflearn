@@ -9,6 +9,7 @@ group = 'com.project'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+// 라이브러리 제공 사이트 커스텀 가능
 repositories {
 	mavenCentral()
 }
