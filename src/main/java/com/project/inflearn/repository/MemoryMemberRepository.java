@@ -23,6 +23,8 @@ public class MemoryMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findByName(String name) {
+        // 스트림 참고 사이트
+        // https://futurecreator.github.io/2018/08/26/java-8-streams/
         return store.values().stream()
                 .filter(member -> member.getName().equals(name))
                 .findAny();
