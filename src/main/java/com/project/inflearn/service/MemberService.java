@@ -9,8 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
 
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
     // 서비스 클래스는 비즈니스와 밀접하게 작성해야한다. 네이밍 또한 밀접하게 해야한다.
     // repository는 서비스 보다는 더 유연하게 작성한다.
 
