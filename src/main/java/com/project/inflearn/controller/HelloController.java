@@ -62,4 +62,10 @@ public class HelloController {
         }
 
     }
+
+    /**
+     * h2 database 셋팅
+     * 8MB로 가벼운 실습용 DB
+     * mysql기반이다.
+     * */
 }
