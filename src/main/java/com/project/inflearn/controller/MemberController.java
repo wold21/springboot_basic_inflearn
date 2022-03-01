@@ -1,8 +1,11 @@
 package com.project.inflearn.controller;
 
+import com.project.inflearn.domain.Member;
 import com.project.inflearn.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 // 스프링이 뜰 때 스프링 컨테이너에 이 클래스를 객체를 생성한 뒤 저장해 둔다.
@@ -32,5 +35,22 @@ public class MemberController {
     // 1. setter injection
     // 2. field injection
     // 3. constructor injection(의존관계 확립 이후에는 동적으로 변화할 경우가 거의 없으므로 생성자 주입을 사용한다.)
+
+    //---------------------------------------------------------------------------
+
+    @GetMapping("/members/new")
+    public String createFoem(){
+        return "members/createMemberForm";
+    }
+
+    @PostMapping("/members/new")
+    public String create(MemberForm form){
+        Member member = new Member();
+        member.setName(form.getName());
+
+        memberService.join(member);
+
+        return "redirect:/";
+    }
 
 }
