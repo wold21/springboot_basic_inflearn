@@ -1,5 +1,6 @@
 package com.project.inflearn;
 
+import com.project.inflearn.aop.TimeTraceAop;
 import com.project.inflearn.repository.*;
 import com.project.inflearn.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,11 @@ public class SpringConfig {
     public MemberService memberService(){
         return new MemberService(memberRepository);
     }
+
+//    @Bean // 보통 이런 함수는 config에 작성한다고 함.
+//    public TimeTraceAop timeTraceAop(){
+//        return new TimeTraceAop();
+//    }
 
 //    @Bean
 //    public MemberRepository memberRepository(){
