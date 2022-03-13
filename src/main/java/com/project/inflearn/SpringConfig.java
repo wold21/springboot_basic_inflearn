@@ -1,6 +1,7 @@
 package com.project.inflearn;
 
 import com.project.inflearn.repository.JdbcMemberRepository;
+import com.project.inflearn.repository.JdbcTemplateMemberRepository;
 import com.project.inflearn.repository.MemberRepository;
 import com.project.inflearn.repository.MemoryMemberRepository;
 import com.project.inflearn.service.MemberService;
@@ -32,6 +33,8 @@ public class SpringConfig {
 
         // h2 데이터 베이스로 변경
         // 스프링이 빈으로 올려 놓은 dataSource를 외부에서 주입 받았다.
-        return new JdbcMemberRepository(dataSource);
+//        return new JdbcMemberRepository(dataSource);
+
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
