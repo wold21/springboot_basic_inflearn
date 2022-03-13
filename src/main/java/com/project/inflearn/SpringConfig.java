@@ -1,13 +1,13 @@
 package com.project.inflearn;
 
-import com.project.inflearn.repository.JdbcMemberRepository;
-import com.project.inflearn.repository.JdbcTemplateMemberRepository;
-import com.project.inflearn.repository.MemberRepository;
-import com.project.inflearn.repository.MemoryMemberRepository;
+import com.project.inflearn.repository.*;
 import com.project.inflearn.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 
 @Configuration
@@ -15,11 +15,18 @@ import javax.sql.DataSource;
 // Component 어노테이션을 가지고 있다.
 public class SpringConfig {
 
-    private DataSource dataSource;
+    @PersistenceContext // 문서에서는 선언을 해줘야한다고 함. 안해도 스프링에서 자동으로 주입해줌.
+    private EntityManager em;
 
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
+    @Autowired
+    public SpringConfig(EntityManager em) {
+        this.em = em;
     }
+
+//    private DataSource dataSource;
+//    public SpringConfig(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
 
     @Bean
     public MemberService memberService(){
@@ -35,6 +42,7 @@ public class SpringConfig {
         // 스프링이 빈으로 올려 놓은 dataSource를 외부에서 주입 받았다.
 //        return new JdbcMemberRepository(dataSource);
 
-        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
     }
 }

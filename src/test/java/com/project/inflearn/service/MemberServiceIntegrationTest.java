@@ -56,10 +56,10 @@ class MemberServiceIntegrationTest {
     public void overlapJoin(){
         //given
         Member member1 = new Member();
-        member1.setName("user02");
+        member1.setName("user03");
 
         Member member2 = new Member();
-        member2.setName("user02");
+        member2.setName("user03");
         //when
         memberService.join(member1);
         IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
